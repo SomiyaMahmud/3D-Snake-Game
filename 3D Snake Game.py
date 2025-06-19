@@ -50,13 +50,13 @@ LEVEL_COLORS = {
         "head": (0.0, 0.5, 0.9),     # Bright blue
         "body": (0.0, 0.3, 0.7),     # Dark blue
         "food": (1.0, 0.5, 0.0),   # Orange
-        "obstacles": (0.55, 0.27, 0.27)   # Brick red
+        "obstacles": (0.55, 0.27, 0.27)  # Brick red
     },
     3: {
         "head": (0.8, 0.2, 0.8),     # Bright purple
         "body": (0.6, 0.1, 0.6),     # Dark purple
         "food": (0.7, 0.17, 0.52),   # Pink
-        "obstacles": (0.55, 0.27, 0.27)   # Brick red
+        "obstacles": (0.55, 0.27, 0.27)  # Brick red
     }
 }
 LEVEL_OBSTACLES = {                  # Format: (x, z, width, depth, height)
@@ -161,31 +161,41 @@ def draw_board():
                 glEnd()
 
     elif LEVEL == 3:
-        glBegin(GL_QUADS)
-
+        # Top-right quadrant
         glColor3f(*colors["board1"])
+        glBegin(GL_QUADS)
         glVertex3f(0, 0, 0)
         glVertex3f(0, GRID_LENGTH, 0)
         glVertex3f(GRID_LENGTH, GRID_LENGTH, 0)
         glVertex3f(GRID_LENGTH, 0, 0)
+        glEnd()
 
+        # Top-left quadrant
         glColor3f(*colors["board2"])
+        glBegin(GL_QUADS)
         glVertex3f(0, 0, 0)
         glVertex3f(0, GRID_LENGTH, 0)
         glVertex3f(-GRID_LENGTH, GRID_LENGTH, 0)
         glVertex3f(-GRID_LENGTH, 0, 0)
+        glEnd()
 
+        # Bottom-left quadrant
         glColor3f(*colors["board1"])
+        glBegin(GL_QUADS)
         glVertex3f(0, 0, 0)
         glVertex3f(0, -GRID_LENGTH, 0)
         glVertex3f(-GRID_LENGTH, -GRID_LENGTH, 0)
         glVertex3f(-GRID_LENGTH, 0, 0)
+        glEnd()
 
+        # Bottom-right quadrant
         glColor3f(*colors["board2"])
+        glBegin(GL_QUADS)
         glVertex3f(0, 0, 0)
         glVertex3f(0, -GRID_LENGTH, 0)
         glVertex3f(GRID_LENGTH, -GRID_LENGTH, 0)
         glVertex3f(GRID_LENGTH, 0, 0)
+        glEnd()
 
     draw_borders()
 
